@@ -14,8 +14,8 @@ int matrix[N][N]={{0      ,4      ,INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,8    
                   {INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,2      ,0      ,1      ,6      },
                   {8      ,11     ,INT_MAX,INT_MAX,INT_MAX,INT_MAX,1      ,0      ,7      },
                   {INT_MAX,INT_MAX,2      ,INT_MAX,INT_MAX,INT_MAX,6      ,7      ,0      }
-                 };
-*/
+                 };*/
+
 
 #define N 5
 int matrix[N][N]={{0      ,10     ,INT_MAX,INT_MAX,5      },
@@ -31,9 +31,11 @@ void dijkstra(int s);
 void releax(int *added,int *distance,int *pre,int k);
 void printPath(int *pre,int end);
 int main(){
-	dijkstra(0);
+	printf("please input the number which you want to be the source point:");
+	int n;
+	scanf("%d",&n);
+	dijkstra(n);
 	return 0;
-
 }
 
 //s是用户指定的源点
@@ -53,7 +55,7 @@ void dijkstra(int s){
 	distance[s]=0;
 	added[s]=1;
 	releax(added,distance,pre,s);
-	print(distance,N);
+	//print(distance,N);
 
 	int min,k,m;
 
@@ -79,6 +81,8 @@ void dijkstra(int s){
 		printPath(pre,i);
 	}
 
+	print(distance,N);
+
 }
 
 void releax(int *added,int *distance,int *pre,int k){
@@ -101,7 +105,6 @@ void releax(int *added,int *distance,int *pre,int k){
 					//如果松动了，需要设置前驱结点
 			        pre[m]=k;	
 				}
-
 			}
 		}
 	}
